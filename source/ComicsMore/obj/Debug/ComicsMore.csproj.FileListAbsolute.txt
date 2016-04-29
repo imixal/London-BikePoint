@@ -72,3 +72,7 @@ D:\JustProject\source\ComicsMore\bin\Newtonsoft.Json.xml
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.csprojResolveAssemblyReference.cache
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.dll
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.pdb
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.InitialCreate.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.csproj.GenerateResource.Cache
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.appUserUpdate.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.userUpdate.resources

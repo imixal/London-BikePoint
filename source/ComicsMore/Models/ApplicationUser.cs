@@ -9,7 +9,9 @@ namespace ComicsMore.Models
 
     public class ApplicationUser : IdentityUser
     {
-        public int Year { get; set; }
+        public String ProfileImage { get; set; }
+        public String PageUrl { get; set; }
+        public String About { get; set; }
 
         public ApplicationUser()
         {
