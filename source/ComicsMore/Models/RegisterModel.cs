@@ -9,15 +9,18 @@ namespace ComicsMore.Models
     public class RegisterModel
     {
         [Required]
-        public string Email { get; set; }
+        public String Nickname{ get; set; }
+
+        [Required]
+        public String Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public String Password { get; set; }
 
         [Required]
         [Compare("Password", ErrorMessage = "Пароли не совпадают")]
         [DataType(DataType.Password)]
-        public string PasswordConfirm { get; set; }
+        public String PasswordConfirm { get; set; }
     }
 }

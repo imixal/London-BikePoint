@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicsMore", "ComicsMore\ComicsMore.csproj", "{6BDFBC31-EBD1-4A9C-9070-BA6F84600CE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicsMore.Tests", "ComicsMore.Tests\ComicsMore.Tests.csproj", "{FA61D54C-901B-496D-9F37-351EFAF72983}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6BDFBC31-EBD1-4A9C-9070-BA6F84600CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BDFBC31-EBD1-4A9C-9070-BA6F84600CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BDFBC31-EBD1-4A9C-9070-BA6F84600CE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA61D54C-901B-496D-9F37-351EFAF72983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA61D54C-901B-496D-9F37-351EFAF72983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA61D54C-901B-496D-9F37-351EFAF72983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA61D54C-901B-496D-9F37-351EFAF72983}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

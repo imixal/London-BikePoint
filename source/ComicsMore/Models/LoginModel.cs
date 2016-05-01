@@ -10,14 +10,13 @@ namespace ComicsMore.Models
     public class LoginModel
     {
         [Required]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public String Nickname { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public String Password { get; set; }
 
         [HiddenInput]
-        public string ReturnUrl { get; set; }
+        public String ReturnUrl { get; set; }
     }
 }

@@ -22,7 +22,6 @@ namespace ComicsMore.Controllers
             }
         }
 
-        #region Registration
         public ActionResult Register()
         {
             return View();
@@ -34,7 +33,7 @@ namespace ComicsMore.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+                ApplicationUser user = new ApplicationUser { UserName = model.Nickname, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -50,9 +49,7 @@ namespace ComicsMore.Controllers
             }
             return View(model);
         }
-        #endregion
 
-        #region Login
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -73,7 +70,7 @@ namespace ComicsMore.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = await UserManager.FindAsync(model.Email, model.Password);
+                ApplicationUser user = await UserManager.FindAsync(model.Nickname, model.Password);
                 if (user == null)
                 {
                     ModelState.AddModelError("", "Invalid email or password.");
@@ -87,11 +84,14 @@ namespace ComicsMore.Controllers
                     {
                         IsPersistent = true
                     }, claim);
+
                     if (String.IsNullOrEmpty(returnUrl))
                         return RedirectToAction("Index", "Home");
+
                     return Redirect(returnUrl);
                 }
             }
+
             ViewBag.returnUrl = returnUrl;
             return View(model);
         }
@@ -101,13 +101,11 @@ namespace ComicsMore.Controllers
             AuthenticationManager.SignOut();
             return RedirectToAction("Login");
         }
-        #endregion
 
-        #region Delete
         [HttpGet]
         public ActionResult Delete()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -125,15 +123,13 @@ namespace ComicsMore.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-        #endregion
 
-        #region Edit
         public async Task<ActionResult> Edit()
         {
-            ApplicationUser user = await UserManager.FindByEmailAsync(User.Identity.Name);
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
             if (user != null)
             {
-                EditModel model = new EditModel { About = user.About, ProfileImage = user.ProfileImage, PageUrl = user.PageUrl};
+                EditModel model = new EditModel { About = user.About, ProfileImage = user.ProfileImage, UserName = user.UserName};
                 return View(model);
             }
             return RedirectToAction("Login", "Account");
@@ -142,14 +138,16 @@ namespace ComicsMore.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(EditModel model)
         {
-            ApplicationUser user = await UserManager.FindByEmailAsync(User.Identity.Name);
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
             if (user != null)
             {
                 user.About = model.About;
+                user.UserName = model.UserName;
+                user.ProfileImage = model.ProfileImage;
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("MyProfile", "Account");
                 }
                 else
                 {
@@ -163,6 +161,16 @@ namespace ComicsMore.Controllers
 
             return View(model);
         }
-        #endregion
+
+        public async Task<ActionResult> MyProfile()
+        {
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+            if (user != null)
+            {
+                ApplicationUser model = new ApplicationUser{ About = user.About, ProfileImage = user.ProfileImage, UserName = user.UserName };
+                return View(model);
+            }
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

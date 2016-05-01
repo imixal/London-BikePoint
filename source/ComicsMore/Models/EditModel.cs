@@ -7,6 +7,7 @@ namespace ComicsMore.Models
 {
     public class EditModel
     {
+        public String UserName { get; set; }
         public String ProfileImage { get; set; }
         public String PageUrl { get; set; }
         public String About { get; set; }

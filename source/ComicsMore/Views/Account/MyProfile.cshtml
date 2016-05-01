@@ -1,0 +1,35 @@
+﻿@model ComicsMore.Models.ApplicationUser
+
+@{
+    ViewBag.Title = Model.UserName;
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm(new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <img src="@Model.ProfileImage" class="img-rounded"
+                             alt="" width="200" height="200" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="col-md-6">@Model.About</p>
+                </div>
+                <div class="form-group">
+                    @*TODO: Move button down.*@
+                    <div class="col-md-2">
+                        <a href="@Url.Action("Edit")">
+                            <input type="button" value="Edit profile" class="btn btn-info" />
+                        </a>
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+@Styles.Render("~/bundles/bootstrap")
+

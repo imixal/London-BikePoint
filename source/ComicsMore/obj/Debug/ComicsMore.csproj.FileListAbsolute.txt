@@ -76,3 +76,4 @@ D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.InitialCreate.r
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.csproj.GenerateResource.Cache
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.appUserUpdate.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.userUpdate.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.userUpdate1.resources
