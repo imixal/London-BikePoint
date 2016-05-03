@@ -1,0 +1,6 @@
+D:\JustProject\source\ComicsMore.Tests\bin\Debug\ComicsMore.Tests.dll
+D:\JustProject\source\ComicsMore.Tests\bin\Debug\ComicsMore.Tests.pdb
+D:\JustProject\source\ComicsMore.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\JustProject\source\ComicsMore.Tests\obj\Debug\ComicsMore.Tests.csprojResolveAssemblyReference.cache
+D:\JustProject\source\ComicsMore.Tests\obj\Debug\ComicsMore.Tests.dll
+D:\JustProject\source\ComicsMore.Tests\obj\Debug\ComicsMore.Tests.pdb

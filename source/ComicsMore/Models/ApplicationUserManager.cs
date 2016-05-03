@@ -20,6 +20,11 @@ namespace ComicsMore.Models
         {
             ApplicationContext db = context.Get<ApplicationContext>();
             ApplicationUserManager manager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
+            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
+            {
+                AllowOnlyAlphanumericUserNames = true,
+                RequireUniqueEmail = true
+            };
             return manager;
         }
     }

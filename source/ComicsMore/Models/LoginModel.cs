@@ -10,6 +10,7 @@ namespace ComicsMore.Models
     public class LoginModel
     {
         [Required]
+        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Letters or numbers")]
         public String Nickname { get; set; }
 
         [Required]

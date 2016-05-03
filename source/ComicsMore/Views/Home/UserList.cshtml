@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ComicsMore.Models.ApplicationUser>
+@{
+    ViewBag.Title = "UserList";
+}
+
+<h2>UserList</h2>
+@foreach (ComicsMore.Models.ApplicationUser u in Model)
+{
+    <tr>
+        <td><p>@u.UserName</p></td>
+        <td><img src="@u.ProfileImage" alt="" width="50" height="50" /></td>
+        <td><p><a href="/Account/UserProfile/@u.UserName">Page</a></p></td>
+    </tr>
+}

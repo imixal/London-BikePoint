@@ -124,9 +124,9 @@ namespace ComicsMore.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public async Task<ActionResult> Edit()
+        public async Task<ActionResult> EditProfile()
         {
-            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
                 EditModel model = new EditModel { About = user.About, ProfileImage = user.ProfileImage, UserName = user.UserName};
@@ -136,18 +136,18 @@ namespace ComicsMore.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(EditModel model)
+        public async Task<ActionResult> EditProfile(EditModel model)
         {
-            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
-            if (user != null)
+            ApplicationUser userProfile = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            if (userProfile != null)
             {
-                user.About = model.About;
-                user.UserName = model.UserName;
-                user.ProfileImage = model.ProfileImage;
-                IdentityResult result = await UserManager.UpdateAsync(user);
+                userProfile.About = model.About;
+                userProfile.UserName = model.UserName;
+                userProfile.ProfileImage = model.ProfileImage;
+                IdentityResult result = await UserManager.UpdateAsync(userProfile);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("MyProfile", "Account");
+                    return RedirectToAction("UserProfile", "Account", new { id = User.Identity.GetUserName() });
                 }
                 else
                 {
@@ -162,12 +162,15 @@ namespace ComicsMore.Controllers
             return View(model);
         }
 
-        public async Task<ActionResult> MyProfile()
+        [HttpGet]
+        public ActionResult UserProfile(String id)
         {
-            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+            ApplicationUser user = UserManager.FindByName(id);
             if (user != null)
             {
-                ApplicationUser model = new ApplicationUser{ About = user.About, ProfileImage = user.ProfileImage, UserName = user.UserName };
+                ApplicationUser model = new ApplicationUser
+                { About = user.About, ProfileImage = user.ProfileImage, UserName = user.UserName };
+
                 return View(model);
             }
             return RedirectToAction("Login", "Account");

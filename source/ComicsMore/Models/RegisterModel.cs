@@ -9,6 +9,7 @@ namespace ComicsMore.Models
     public class RegisterModel
     {
         [Required]
+        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Letters or numbers")]
         public String Nickname{ get; set; }
 
         [Required]

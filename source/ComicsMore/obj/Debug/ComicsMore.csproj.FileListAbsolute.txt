@@ -69,7 +69,6 @@ D:\JustProject\source\ComicsMore\bin\System.Web.WebPages.Deployment.xml
 D:\JustProject\source\ComicsMore\bin\System.Web.WebPages.Razor.xml
 D:\JustProject\source\ComicsMore\bin\Antlr3.Runtime.pdb
 D:\JustProject\source\ComicsMore\bin\Newtonsoft.Json.xml
-D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.csprojResolveAssemblyReference.cache
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.dll
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.pdb
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.InitialCreate.resources
@@ -77,3 +76,4 @@ D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.csproj.GenerateResource.Ca
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.appUserUpdate.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.userUpdate.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.userUpdate1.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.csprojResolveAssemblyReference.cache
