@@ -1,4 +1,4 @@
-﻿@model ComicsMore.Models.EditModel
+﻿@model ComicsMore.Models.EditViewModel
 
 @{
     ViewBag.Title = "Account Settings";
@@ -8,9 +8,9 @@
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-            @using (Html.BeginForm("EditProfile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("EditProfile", "Account", FormMethod.Post, htmlAttributes: new { id = Model.UserName, enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
             {
-                @Html.AntiForgeryToken()
+                            @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     <label class="col-md-2 control-label">Profile Image</label>
@@ -19,7 +19,7 @@
                              alt="" width="150" height="150" />
                     </div>
                     <div class="col-md-offset-2 col col-md-10">
-                        @Html.TextBoxFor(m => m.ProfileImage, new { @class = "form-control" })
+                        <input type="file" name="file" id="file" class="btn btn-default"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -51,4 +51,8 @@
         </section>
     </div>
 </div>
+@Scripts.Render("~/bundles/cloudinary")
 @Styles.Render("~/bundles/bootstrap")
+<script>
+  $.cloudinary.config("cloud_name", "your_cloud_name");
+</script>

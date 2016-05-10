@@ -1,7 +1,8 @@
-﻿@model ComicsMore.Models.ApplicationUser
+﻿@model ComicsMore.Models.UserViewModel
+@using Microsoft.AspNet.Identity
 
 @{
-    ViewBag.Title = Model.UserName;
+    ViewBag.Title = Model.Profile.UserName;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -12,24 +13,56 @@
             {
                 <div class="form-group">
                     <div class="col-md-4">
-                        <img src="@Model.ProfileImage" class="img-rounded"
+                        <img src="@Model.Profile.ProfileImage" class="img-rounded"
                              alt="" width="200" height="200" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <p class="col-md-6">@Model.About</p>
+                    <p class="col-md-6">@Model.Profile.About</p>
                 </div>
-                <div class="form-group">
-                    @*TODO: Move button down.*@
-                    <div class="col-md-2">
-                        <a href="@Url.Action("EditProfile")">
-                            <input type="button" value="Edit profile" class="btn btn-info" />
-                        </a>
+                if ((User.Identity.GetUserId() == Model.Profile.Id) || (User.IsInRole("Admin")))
+                {
+                    <div class="form-group">
+                        @*TODO: Move button down.*@
+                        <div class="col-md-2">
+                            <a href="@Url.Action("EditProfile", new { id = Model.Profile.UserName })">
+                                <input type="button" value="Edit profile" class="btn btn-info" />
+                            </a>
+                        </div>
                     </div>
-                </div>
+
+                }
+
             }
+
+
         </section>
     </div>
+</div>
+<div id="comments-block">
+    <div id="add-comment">
+        <form id="comment-form" method="post" action="">
+            <label for="comment-for">Comments</label>
+            @Html.TextAreaFor(m => m.Comments.First().Body)
+            @*<textarea class="form-control" id="Body" name="Body" placeholder="Write your comment"></textarea>*@
+            @*<a href="@Url.Action("AddComment", new { id = Model.Id)">*@
+            <input type="submit" value="Add comment" class="btn btn-default" />
+            @*</a>*@
+        </form>
+    </div>
+    @if (Model.Comments != null)
+    {
+        foreach (var comment in Model.Comments)
+        {
+            <div>
+                @*<p>@comment.Author.UserName</p>*@
+                <p>@comment.Time</p>
+            </div>
+            <div>
+                <p>@comment.Body</p>
+            </div>
+        }
+    }
 </div>
 @Styles.Render("~/bundles/bootstrap")
 

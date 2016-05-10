@@ -76,4 +76,12 @@ D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.csproj.GenerateResource.Ca
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.appUserUpdate.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.userUpdate.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.userUpdate1.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.RolesMigration.resources
+D:\JustProject\source\ComicsMore\bin\CloudinaryDotNet.dll
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.Comments.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.Comments2.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.commentsUpdate.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.AuthorRequired.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.FinalComments.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.csprojResolveAssemblyReference.cache
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.CommentIdInt.resources

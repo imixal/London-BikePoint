@@ -7,7 +7,7 @@ using ComicsMore.Models;
 
 namespace ComicsMore.Controllers
 {
-    [Authorize]
+
     public class HomeController : Controller
     {
         
@@ -32,7 +32,7 @@ namespace ComicsMore.Controllers
 
         public ActionResult UserList()
         {
-            ApplicationContext db = ApplicationContext.Create();
+            IdentityContext db = IdentityContext.Create();
 
             return View(db.Users);
         }
