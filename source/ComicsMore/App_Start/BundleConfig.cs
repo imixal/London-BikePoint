@@ -11,6 +11,9 @@ namespace ComicsMore
             bundles.Add(new ScriptBundle("~/bundles/cloudinary").Include(
                         "~/Scripts/Cloudinary/*.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/app-script").Include(
+                "~/Scripts/app-script.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 

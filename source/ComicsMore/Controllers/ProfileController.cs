@@ -83,14 +83,15 @@ namespace ComicsMore.Controllers
         }
         
         [HttpPost]
-        [Route("/Profile/DeleteComment")]
-        public void DeleteComment(int commentId)
+        public ActionResult DeleteComment(int commentId)
         {
             ApplicationUser user = UserManager.FindByName(pageId);
             Comment comment = dbContext.Comments.Where(c => c.Id == commentId).First();
+            var com = user.Comments.Where(c => c.Id == commentId).First();
 
-            user.Comments.Remove(comment);
+            user.Comments.Remove(com);
             UserManager.Update(user);
+            return RedirectToAction("UserProfile", "Profile");
         }
 
         [HttpGet]

@@ -3,9 +3,10 @@
     jQuery.ajax({
         type: "POST",
         url: 'DeleteComment',
-        data: { commentId: commentId },
-        dataType: "json",
+        data: JSON.stringify({ commentId: commentId }),
         contentType: "application/json; charset=utf-8",
+        dataType: "json",
+
         success: function () {
             alert("success");
         }
