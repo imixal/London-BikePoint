@@ -38,3 +38,13 @@ textarea {
 #comments-block input{
     margin-top:5px;
 }
+.comment{
+    border-bottom: 1px solid;
+    border-bottom-color: darkgray;
+    border-top: none;
+    /*background-color: lightgray;*/
+}
+.comment-delete{
+    float: right;
+    margin: 3px;
+}

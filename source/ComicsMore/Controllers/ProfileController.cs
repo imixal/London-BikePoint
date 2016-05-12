@@ -70,30 +70,31 @@ namespace ComicsMore.Controllers
 
                 if (comment.Body != null)
                 {
-                    //AddComment(comment);
-                    comment.Id = 1;
                     comment.Author = user;
                     comment.UserPage = UserManager.FindByName(pageId);
+                    user.Comments.Add(comment);
 
                     UserManager.Update(user);
                 }
 
-
-                RedirectToAction("UserProfile", "Profile");
+                return RedirectToAction("UserProfile", "Profile");
             }
             return RedirectToAction("Login", "Account");
         }
-
-        public void AddComment(Comment comment)
+        
+        [HttpPost]
+        [Route("/Profile/DeleteComment")]
+        public void DeleteComment(int commentId)
         {
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
-            comment.Author = user;
-            comment.Time = DateTime.UtcNow;
-            user.Comments.Add(comment);
+            ApplicationUser user = UserManager.FindByName(pageId);
+            Comment comment = dbContext.Comments.Where(c => c.Id == commentId).First();
+
+            user.Comments.Remove(comment);
+            UserManager.Update(user);
         }
 
         [HttpGet]
-        public ActionResult Delete()
+        public ActionResult DeleteProfile()
         {
             return PartialView();
         }

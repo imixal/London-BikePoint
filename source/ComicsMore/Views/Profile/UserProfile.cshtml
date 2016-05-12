@@ -51,17 +51,40 @@
     </div>
     @if (Model.Comments != null)
     {
-        foreach (var comment in Model.Comments)
+        foreach (var comment in Model.Comments.Reverse())
         {
-            <div>
+            <div class="comment">
+
                 @Html.ActionLink(comment.Author.UserName, "UserProfile")
-                <p>@comment.Time</p>
-            </div>
-            <div>
+                @* Compare ids*@
+                @if ((User.Identity.Name == comment.Author.UserName) || (User.IsInRole("Admin")))
+                {
+                    @*@Html.ActionLink("Delete", "DeleteComment", "Profile", new { commentId = comment.Id }, new { @class = "comment-delete" })*@
+                    @*<a class="comment-delete" href="" comment-id="@comment.Id">Delete</a>*@
+                    <button class="comment-delete btn btn-default" comment-id="@comment.Id">&#10005;</button>
+                }
                 <p>@comment.Body</p>
+                <p>@comment.Time.ToString("dd MMMM") at @comment.Time.ToString("h:mm tt").ToLower()</p>
             </div>
         }
     }
 </div>
 @Styles.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jquery")
 
+<script>
+    $(".comment-delete").click(function () {
+        commentId = $(this).attr("comment-id");
+        jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("DeleteComment")',
+            data:  { commentId: commentId },
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function () {
+                alert("success");
+            }
+        });
+        alert(commentId);
+    });
+</script>
