@@ -85,3 +85,9 @@ D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.AuthorRequired.
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.FinalComments.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.csprojResolveAssemblyReference.cache
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.CommentIdInt.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Global.resources
+D:\JustProject\source\ComicsMore\bin\ru\ComicsMore.resources.dll
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Global.ru.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ru\ComicsMore.resources.dll
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Layout.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Layout.ru.resources

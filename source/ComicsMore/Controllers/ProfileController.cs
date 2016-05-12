@@ -58,6 +58,8 @@ namespace ComicsMore.Controllers
         public ActionResult UserProfile(String id, Comment comment)
         {
             ApplicationUser user = UserManager.FindByName(User.Identity.Name);
+            String returnUrl = Request.UrlReferrer.AbsolutePath;
+
             if (user != null)
             {
                 //ApplicationUser model = new ApplicationUser
@@ -77,7 +79,7 @@ namespace ComicsMore.Controllers
                     UserManager.Update(user);
                 }
 
-                return RedirectToAction("UserProfile", "Profile");
+                return Redirect(returnUrl);
             }
             return RedirectToAction("Login", "Account");
         }

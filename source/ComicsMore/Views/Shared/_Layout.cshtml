@@ -20,10 +20,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink(@Resources.Layout.Home, "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Users", "UserList", "Home")</li>
+                    <li>@Html.ActionLink(Resources.Layout.UserList, "UserList", "Home")</li>
+                    @using (Html.BeginForm("ChangeCulture", "Home"))
+                    {
+                        <select name="lang">
+                            <option disabled selected>@Resources.Layout.ChooseLanguage</option>
+                            <option value="en">English</option>
+                            <option value="ru">Русский</option>
+                        </select>
+                        <input type="submit" name="submit" value="@Resources.Layout.ChooseLanguage">
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -16,6 +16,7 @@ namespace ComicsMore
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
+                //constraints: new { lang = @"(\w{2})|(\w{2}-\w{2})" },
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
