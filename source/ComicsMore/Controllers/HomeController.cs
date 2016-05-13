@@ -5,13 +5,23 @@ using System.Web;
 using System.Web.Mvc;
 using ComicsMore.Models;
 using ComicsMore.Filters;
+using System.Web.Optimization;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ComicsMore.Controllers
 {
     [Culture]
     public class HomeController : Controller
     {
-        
+        private ApplicationUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -61,6 +71,21 @@ namespace ComicsMore.Controllers
             }
 
             Response.Cookies.Add(cookie);
+            return Redirect(returnUrl);
+        }
+
+        public ActionResult ChangeStyle(String style)
+        {
+            String returnUrl = Request.UrlReferrer.AbsolutePath;
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+
+            if (style.ToLower() == "dark")
+                user.Style = "dark";
+            else
+                user.Style = "light";
+
+            UserManager.Update(user);
+
             return Redirect(returnUrl);
         }
     }

@@ -26,7 +26,7 @@
                         @*TODO: Move button down.*@
                         <div class="col-md-2">
                             <a href="@Url.Action("EditProfile", new { id = Model.Profile.UserName })">
-                                <input type="button" value="Edit profile" class="btn btn-info" />
+                                <input type="button" value="@Resources.Profile.EditProfile" class="btn btn-info" />
                             </a>
                         </div>
                     </div>
@@ -42,11 +42,9 @@
 <div id="comments-block">
     <div id="add-comment">
         <form id="comment-form" method="post" action="">
-            <label for="comment-for">Comments</label>
-            <textarea class="form-control" name="Body" placeholder="Write your comment"></textarea>
-            @*<a href="@Url.Action("AddComment", new { id = Model.Id)">*@
-            <input type="submit" value=@Resources.Global.AddComment class="btn btn-default" />
-            @*</a>*@
+            <label for="comment-for">@Resources.Profile.Comments</label>
+            <textarea class="form-control" name="Body" placeholder="@Resources.Profile.CommentPlaceholder"></textarea>
+            <input type="submit" value="@Resources.Profile.AddComment" class="btn btn-default" />
         </form>
     </div>
     @if (Model.Comments != null)
@@ -59,12 +57,10 @@
                 @* Compare ids*@
                 @if ((User.Identity.Name == comment.Author.UserName) || (User.IsInRole("Admin")))
                 {
-                    @*@Html.ActionLink("Delete", "DeleteComment", "Profile", new { commentId = comment.Id }, new { @class = "comment-delete" })*@
-                    @*<a class="comment-delete" href="" comment-id="@comment.Id">Delete</a>*@
                     <button class="comment-delete btn btn-default" comment-id="@comment.Id">&#10005;</button>
                 }
                 <p>@comment.Body</p>
-                <p>@comment.Time.ToString("dd MMMM") at @comment.Time.ToString("h:mm tt").ToLower()</p>
+                <p>@comment.Time.ToString("dd MMMM") @Resources.Profile.At @comment.Time.ToString("h:mm tt").ToLower()</p>
             </div>
         }
     }

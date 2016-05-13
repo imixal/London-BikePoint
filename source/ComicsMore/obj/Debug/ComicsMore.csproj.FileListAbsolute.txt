@@ -91,3 +91,6 @@ D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Global.ru.resour
 D:\JustProject\source\ComicsMore\obj\Debug\ru\ComicsMore.resources.dll
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Layout.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Layout.ru.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Profile.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Profile.ru.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.UserStyle.resources

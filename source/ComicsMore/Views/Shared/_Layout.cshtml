@@ -1,10 +1,32 @@
-﻿<!DOCTYPE html>
+﻿@using ComicsMore.Models
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+
+    @if (Request.IsAuthenticated)
+    {
+        ApplicationUser user = HttpContext.Current.GetOwinContext().
+    GetUserManager<ApplicationUserManager>().FindById(HttpContext.Current.User.Identity.GetUserId());
+        if (user.Style == "light")
+        {
+            Styles.Render("~/Content/css");
+        }
+        else
+        {
+            Styles.Render("~/Content/css-dark");
+        }
+    }
+    else
+    {
+        @Styles.Render("~/Content/css")
+    }
+
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -20,7 +42,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(@Resources.Layout.Home, "Index", "Home")</li>
+                    <li>@Html.ActionLink(Resources.Layout.Home, "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink(Resources.Layout.UserList, "UserList", "Home")</li>
@@ -31,7 +53,16 @@
                             <option value="en">English</option>
                             <option value="ru">Русский</option>
                         </select>
-                        <input type="submit" name="submit" value="@Resources.Layout.ChooseLanguage">
+                        <input type="submit" name="submit" value="@Resources.Layout.ChooseLanguage" class="btn btn-default">
+                    }
+                    @using (Html.BeginForm("ChangeStyle", "Home"))
+                    {
+                        <select name="style">
+                            <option disabled selected></option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                        <input type="submit" name="submit" value="style">
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

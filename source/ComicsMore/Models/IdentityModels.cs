@@ -25,9 +25,12 @@ namespace ComicsMore.Models
     {
         public String ProfileImage { get; set; }
         public String About { get; set; }
+        public String Style { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 
         public ApplicationUser()
-        { }
+        {
+            Style = "~/Content/css";
+        }
     }
 }

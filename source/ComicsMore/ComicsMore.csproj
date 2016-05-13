@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201605100833227_CommentIdInt.Designer.cs">
       <DependentUpon>201605100833227_CommentIdInt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605132155552_UserStyle.cs" />
+    <Compile Include="Migrations\201605132155552_UserStyle.Designer.cs">
+      <DependentUpon>201605132155552_UserStyle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationRoleManager.cs" />
@@ -261,6 +265,16 @@
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Profile.ru.Designer.cs">
+      <DependentUpon>Profile.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Profile.Designer.cs">
+      <DependentUpon>Profile.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\Global.ru.Designer.cs">
       <DependentUpon>Global.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -281,15 +295,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Layout.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\LocalizationAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-darkly.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\app-script.js" />
@@ -336,11 +350,9 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Account\EditProfile.cshtml" />
-    <Content Include="Views\Account\UserProfile.cshtml" />
-    <Content Include="Views\Account\_Delete.cshtml" />
     <Content Include="Views\Home\UserList.cshtml" />
     <Content Include="Views\Profile\UserProfile.cshtml" />
+    <Content Include="Views\Profile\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -387,6 +399,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605100833227_CommentIdInt.resx">
       <DependentUpon>201605100833227_CommentIdInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605132155552_UserStyle.resx">
+      <DependentUpon>201605132155552_UserStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Profile.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Profile.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Profile.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Profile.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Global.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

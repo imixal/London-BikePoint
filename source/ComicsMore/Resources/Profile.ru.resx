@@ -117,13 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChooseLanguage" xml:space="preserve">
-    <value>Выбрать язык</value>
+  <data name="AddComment" xml:space="preserve">
+    <value>Добавить комментарий</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Главная</value>
+  <data name="At" xml:space="preserve">
+    <value>в</value>
   </data>
-  <data name="UserList" xml:space="preserve">
-    <value>Список пользователей</value>
+  <data name="CommentPlaceholder" xml:space="preserve">
+    <value>Введите комментарий</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Комментарии</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Редактировать профиль</value>
   </data>
 </root>

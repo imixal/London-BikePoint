@@ -8,25 +8,25 @@
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-            @using (Html.BeginForm("EditProfile", "Account", FormMethod.Post, htmlAttributes: new { id = Model.UserName, enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("EditProfile", "Profile", FormMethod.Post, htmlAttributes: new { id = Model.UserName, enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
             {
-                            @Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     <label class="col-md-2 control-label">Profile Image</label>
                     <div class="col-md-10">
-                        <img src="@Model.ProfileImage" class="img-rounded" 
+                        <img src="@Model.ProfileImage" class="img-rounded"
                              alt="" width="150" height="150" />
                     </div>
                     <div class="col-md-offset-2 col col-md-10">
-                        <input type="file" name="file" id="file" class="btn btn-default"/>
+                        <input type="file" name="file" id="file" class="btn btn-default" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label">Nickname: </label>
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger"})
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -54,5 +54,5 @@
 @Scripts.Render("~/bundles/cloudinary")
 @Styles.Render("~/bundles/bootstrap")
 <script>
-  $.cloudinary.config("cloud_name", "your_cloud_name");
+    $.cloudinary.config("cloud_name", "your_cloud_name");
 </script>

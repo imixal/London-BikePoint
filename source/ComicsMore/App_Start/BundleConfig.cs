@@ -32,6 +32,10 @@ namespace ComicsMore
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css-dark").Include(
+                "~/Content/bootstrap-darkly.css",
+                "~/Content/site.css))"));
         }
     }
 }

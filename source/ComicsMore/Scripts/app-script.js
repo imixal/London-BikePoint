@@ -9,6 +9,9 @@
 
         success: function () {
             alert("success");
+        },
+        error: function () {
+            alert("error");
         }
     });
     alert(commentId);
