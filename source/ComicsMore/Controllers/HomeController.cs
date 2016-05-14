@@ -45,7 +45,7 @@ namespace ComicsMore.Controllers
         {
             IdentityContext db = IdentityContext.Create();
 
-            return View(db.Users);
+            return View(UserManager.Users);
         }
 
         public ActionResult ChangeCulture(String lang)

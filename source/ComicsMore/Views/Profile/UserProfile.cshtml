@@ -30,7 +30,14 @@
                             </a>
                         </div>
                     </div>
-
+                }
+                if (Model.Medals != null)
+                {
+                    foreach (var medal in Model.Medals)
+                    {
+                        <img src="@medal.ImageUrl" alt="@medal.Name" width="30" height="30" title="@medal.Contidion"/>
+                        <p>@medal.Name</p>
+                    }
                 }
 
             }

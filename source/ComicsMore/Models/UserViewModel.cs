@@ -9,5 +9,6 @@ namespace ComicsMore.Models
     {
         public ApplicationUser Profile { get; set; }
         public IEnumerable<Comment> Comments { get; set; }
+        public IEnumerable<Medal> Medals { get; set; }
     }
 }

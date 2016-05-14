@@ -15,11 +15,11 @@
     GetUserManager<ApplicationUserManager>().FindById(HttpContext.Current.User.Identity.GetUserId());
         if (user.Style == "light")
         {
-            Styles.Render("~/Content/css");
+            @Styles.Render("~/Content/css");
         }
         else
         {
-            Styles.Render("~/Content/css-dark");
+            @Styles.Render("~/Content/css-dark");
         }
     }
     else
@@ -45,25 +45,40 @@
                     <li>@Html.ActionLink(Resources.Layout.Home, "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink(Resources.Layout.UserList, "UserList", "Home")</li>
-                    @using (Html.BeginForm("ChangeCulture", "Home"))
+                    @if (User.IsInRole("Admin"))
                     {
-                        <select name="lang">
-                            <option disabled selected>@Resources.Layout.ChooseLanguage</option>
-                            <option value="en">English</option>
-                            <option value="ru">Русский</option>
-                        </select>
-                        <input type="submit" name="submit" value="@Resources.Layout.ChooseLanguage" class="btn btn-default">
+                        <li>@Html.ActionLink("Manage users", "ManageUsers", "Admin")</li>
                     }
-                    @using (Html.BeginForm("ChangeStyle", "Home"))
+                    else
                     {
-                        <select name="style">
-                            <option disabled selected></option>
-                            <option value="light">Light</option>
-                            <option value="dark">Dark</option>
-                        </select>
-                        <input type="submit" name="submit" value="style">
+                        <li>@Html.ActionLink(Resources.Layout.UserList, "UserList", "Home")</li>
                     }
+                    <li>
+                        @using (Html.BeginForm("ChangeCulture", "Home"))
+                        {
+                            @*@Html.DropDownList("lang", new[] {
+                                new SelectListItem() { Selected = true, Disabled = true, Text = Resources.Layout.ChooseLanguage },
+                                new SelectListItem() { Text = "English", Value = "en" },
+                                new SelectListItem() { Text = "Русский", Value = "ru"} })*@
+                            <select name="lang">
+                                <option disabled selected>@Resources.Layout.ChooseLanguage</option>
+                                <option value="en">English</option>
+                                <option value="ru">Русский</option>
+                            </select>
+                            <input type="submit" name="submit" value="@Resources.Layout.ChooseLanguage" class="btn btn-default">
+                        }
+                    </li>
+                    <li>
+                        @using (Html.BeginForm("ChangeStyle", "Home"))
+                        {
+                            <select name="style">
+                                <option disabled selected></option>
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                            <input type="submit" name="submit" value="style">
+                        }
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

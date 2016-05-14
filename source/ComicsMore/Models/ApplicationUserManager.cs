@@ -25,6 +25,7 @@ namespace ComicsMore.Models
                 AllowOnlyAlphanumericUserNames = true,
                 RequireUniqueEmail = true
             };
+
             return manager;
         }
     }

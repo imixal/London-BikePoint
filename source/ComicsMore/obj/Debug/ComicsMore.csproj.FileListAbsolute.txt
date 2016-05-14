@@ -94,3 +94,6 @@ D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Layout.ru.resour
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Profile.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Resources.Profile.ru.resources
 D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.UserStyle.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.MedalsInit.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.MedalsFix.resources
+D:\JustProject\source\ComicsMore\obj\Debug\ComicsMore.Migrations.MedalNameAdded.resources

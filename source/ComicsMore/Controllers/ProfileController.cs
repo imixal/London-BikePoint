@@ -14,16 +14,15 @@ namespace ComicsMore.Controllers
     [Culture]
     public class ProfileController : Controller
     {
-        private IdentityContext dbContext { get; set; }
         public static String pageId;
-
-
-        public ProfileController()
+        
+        private IdentityContext DbContext
         {
-            dbContext = new IdentityContext();
+            get
+            {
+                return HttpContext.GetOwinContext().Get<IdentityContext>();
+            }
         }
-
-
 
         private ApplicationUserManager UserManager
         {
@@ -43,12 +42,12 @@ namespace ComicsMore.Controllers
             ApplicationUser user = UserManager.FindByName(id);
             if (user != null)
             {
-                //ApplicationUser model = new ApplicationUser
-                //{ About = user.About, ProfileImage = user.ProfileImage, UserName = user.UserName, Id = user.Id }
                 UserViewModel model = new UserViewModel
                 {
                     Profile = user,
-                    Comments = dbContext.Comments.Where(c => c.UserPage.Id == user.Id).ToList()
+                    //Comments = dbContext.Comments.Where(c => c.UserPage.Id == user.Id).ToList(),
+                    Comments = user.Comments,
+                    Medals = user.Medals
                 };
 
                 return View(model);
@@ -71,22 +70,35 @@ namespace ComicsMore.Controllers
                     user.Comments.Add(comment);
 
                     UserManager.Update(user);
+                    UpdateMedals();
                 }
 
                 return Redirect(returnUrl);
             }
             return RedirectToAction("Login", "Account");
         }
-        
+
+        public void UpdateMedals()
+        {
+            ApplicationUser user = UserManager.FindByName(pageId);
+
+            if(user.Comments.Count >= 10)
+            {
+                Medal medal = DbContext.Medals.First(m => m.Id == 7);
+                user.Medals.Add(medal);
+                UserManager.Update(user);
+            }
+        }
+
         [HttpPost]
         public ActionResult DeleteComment(int commentId)
         {
             ApplicationUser user = UserManager.FindByName(pageId);
-            Comment comment = dbContext.Comments.Where(c => c.Id == commentId).First();
-            var com = user.Comments.Where(c => c.Id == commentId).First();
+            Comment comment = DbContext.Comments.First(c => c.Id == commentId);
 
-            user.Comments.Remove(com);
+            user.Comments.Remove(comment);
             UserManager.Update(user);
+
             return RedirectToAction("UserProfile", "Profile");
         }
 

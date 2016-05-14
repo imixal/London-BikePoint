@@ -18,6 +18,7 @@ namespace ComicsMore.Models
         }
 
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Medal> Medals { get; set; }
 
     }
 
@@ -27,6 +28,7 @@ namespace ComicsMore.Models
         public String About { get; set; }
         public String Style { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Medal> Medals { get; set; }
 
         public ApplicationUser()
         {

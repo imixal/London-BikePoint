@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Filters\CultureAttribute.cs" />
@@ -252,12 +253,24 @@
     <Compile Include="Migrations\201605132155552_UserStyle.Designer.cs">
       <DependentUpon>201605132155552_UserStyle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605141216487_MedalsInit.cs" />
+    <Compile Include="Migrations\201605141216487_MedalsInit.Designer.cs">
+      <DependentUpon>201605141216487_MedalsInit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605141226304_MedalsFix.cs" />
+    <Compile Include="Migrations\201605141226304_MedalsFix.Designer.cs">
+      <DependentUpon>201605141226304_MedalsFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605141236217_MedalNameAdded.cs" />
+    <Compile Include="Migrations\201605141236217_MedalNameAdded.Designer.cs">
+      <DependentUpon>201605141236217_MedalNameAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationModels.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUserManager.cs" />
     <Compile Include="Models\Cloudinary.cs" />
-    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\EditViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -353,6 +366,7 @@
     <Content Include="Views\Home\UserList.cshtml" />
     <Content Include="Views\Profile\UserProfile.cshtml" />
     <Content Include="Views\Profile\EditProfile.cshtml" />
+    <Content Include="Views\Admin\ManageUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -402,6 +416,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605132155552_UserStyle.resx">
       <DependentUpon>201605132155552_UserStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605141216487_MedalsInit.resx">
+      <DependentUpon>201605141216487_MedalsInit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605141226304_MedalsFix.resx">
+      <DependentUpon>201605141226304_MedalsFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605141236217_MedalNameAdded.resx">
+      <DependentUpon>201605141236217_MedalNameAdded.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Profile.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
