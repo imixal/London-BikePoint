@@ -147,24 +147,23 @@ namespace ComicsMore.Controllers
         [HttpPost]
         public async Task<ActionResult> EditProfile(EditViewModel model, HttpPostedFileBase file, String name)
         {
-            ApplicationUser userProfile = await UserManager.FindByNameAsync(name);
-            String returnUrl = Request.UrlReferrer.AbsolutePath;
+            ApplicationUser user = await UserManager.FindByNameAsync(name);
 
-            if (userProfile != null)
+            if (user != null)
             { 
-            var uploadParams = new ImageUploadParams
-            {
-                File = new FileDescription(file)
-            };
-            var uploadResult = cloud.Upload(uploadParams);
+            //var uploadParams = new ImageUploadParams
+            //{
+            //    File = new FileDescription(file)
+            //};
+            //var uploadResult = cloud.Upload(uploadParams);
 
-            userProfile.About = model.About;
-                userProfile.UserName = model.UserName;
+            user.About = model.About;
+                user.UserName = model.UserName;
 
-                IdentityResult result = await UserManager.UpdateAsync(userProfile);
+                IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
-                    return Redirect(returnUrl);
+                    return RedirectToAction("UserProfile", "Profile", new { name = user.UserName });
                 }
                 else
                 {

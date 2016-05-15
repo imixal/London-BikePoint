@@ -13,5 +13,6 @@ namespace ComicsMore.Models
         public String ProfileImage { get; set; }
         public String PageUrl { get; set; }
         public String About { get; set; }
+        public ApplicationRole Role { get; set; }
     }
 }
