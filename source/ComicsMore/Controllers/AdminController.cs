@@ -34,13 +34,12 @@ namespace ComicsMore.Controllers
             return View(DbContext.Users);
         }
 
-        public ActionResult DeleteUser()
-        {
-            return RedirectToAction("ManageUsers");
-        }
-
+        [HttpGet]
         public async Task<ActionResult> EditUser(String name)
         {
+            if (name == null)
+                return RedirectToAction("ManageUsers", "Admin");
+
             ApplicationUser user = await UserManager.FindByNameAsync(name);
             if (user != null)
             {
@@ -82,6 +81,29 @@ namespace ComicsMore.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteUser(String name)
+        {
+            ViewBag.UserName = name;
+            return View();
+        }
+
+        [HttpPost]
+        [ActionName("DeleteUser")]
+        public async Task<ActionResult> DeleteConfirmed(String name)
+        {
+            ApplicationUser user = await UserManager.FindByNameAsync(name);
+            if (user != null)
+            {
+                IdentityResult result = await UserManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ManageUsers", "Admin");
+                }
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

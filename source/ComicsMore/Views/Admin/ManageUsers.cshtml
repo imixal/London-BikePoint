@@ -6,11 +6,10 @@
 
 <h2>ManageUsers</h2>
 
-<h2>Роли</h2>
 <table class="table">
     <tr>
         <th>Nickname</th>
-        <th>Role</th>
+        <th>About</th>
         <th></th>
     </tr>
 
@@ -18,9 +17,10 @@
     {
         <tr>
             <td>@user.UserName</td>
+            <td>@user.About</td>
             <td>
-                @Html.ActionLink("Edit", "EditProfile", "Profile", new { name = user.UserName }, new { @title = "Edit" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = user.Id })
+                @Html.ActionLink("Edit", "EditUser", "Admin", new { name = user.UserName }, new { @title = "Edit" }) |
+                @Html.ActionLink("Delete", "DeleteUser", "Admin", new { name = user.UserName }, new { @title = "Delete" })
             </td>
         </tr>
     }

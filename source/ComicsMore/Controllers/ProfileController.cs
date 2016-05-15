@@ -54,8 +54,7 @@ namespace ComicsMore.Controllers
                 UserViewModel model = new UserViewModel
                 {
                     Profile = user,
-                    //Comments = dbContext.Comments.Where(c => c.UserPage.Id == user.Id).ToList(),
-                    Comments = user.Comments,
+                    Comments = DbContext.Comments.Where(c => c.UserPage.Id == user.Id).ToList(),
                     Medals = user.Medals
                 };
 
@@ -109,28 +108,6 @@ namespace ComicsMore.Controllers
             UserManager.Update(user);
 
             return RedirectToAction("UserProfile", "Profile");
-        }
-
-        [HttpGet]
-        public ActionResult DeleteProfile()
-        {
-            return PartialView();
-        }
-
-        [HttpPost]
-        [ActionName("Delete")]
-        public async Task<ActionResult> DeleteConfirmed()
-        {
-            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            if (user != null)
-            {
-                IdentityResult result = await UserManager.DeleteAsync(user);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Logout", "Account");
-                }
-            }
-            return RedirectToAction("Index", "Home");
         }
 
         public async Task<ActionResult> EditProfile(String name)
