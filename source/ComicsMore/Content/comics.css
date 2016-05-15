@@ -104,19 +104,12 @@ label{
     width:300px;
     height:150px;
     background-color:#fff;
-    top:190px;
+    top:260px;
     left:5px;
 }
 #modal-window-video{
 
     width:150px;
-    height:150px;
-    background-color:#fff;
-    top:265px;
-    left:5px;
-}
-#modal-window-comment{
-    width:300px;
     height:150px;
     background-color:#fff;
     top:340px;
@@ -125,16 +118,16 @@ label{
 #modal-window-font{
     
     width:300px;
-    height:480px;
+    height:700px;
     background-color:#fff;
-    top:415px;
+    top:190px;
     left:5px;
 }
 #modal-window-property{
     width:300px;
     height:300px;
     background-color:#fff;
-    top:490px;
+    top:415px;
     left:5px;
 }
 .strait{
@@ -253,4 +246,52 @@ label{
     border-radius: 10px;
     background:#29bdb3;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+/*облака*/
+.speech-bubble {
+  position: relative;
+  background-color: #292929;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  font-family: sans-serif;
+}
+ 
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+}
+ 
+ 
+/* Расположение стрелки */
+ 
+.speech-bubble-top:after {
+  border-color:transparent;
+  border-bottom-color: #292929 ;
+  left: 50%;
+  bottom: 100%;
+  margin-left: -15px;   
+}
+.speech-bubble-right:after {
+  border-left-color: #292929 ;
+  left: 100%;
+  top: 50%;
+  margin-top: -15px;    
+}
+ 
+.speech-bubble-bottom:after {
+  border-top-color: #292929 ;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;   
+}
+.speech-bubble-left:after {
+  border-right-color: #292929 ;
+  top: 50%;
+  right: 100%;
+  margin-top: -15px;    
 }
