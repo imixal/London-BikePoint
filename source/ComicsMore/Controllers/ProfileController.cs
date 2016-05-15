@@ -41,6 +41,17 @@ namespace ComicsMore.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("DeleteComment")]
+        public void DeleteComment(int commentId)
+        {
+            ApplicationUser user = UserManager.FindByName(pageName);
+            Comment comment = DbContext.Comments.First(c => c.Id == commentId);
+
+            DbContext.Comments.Remove(comment);
+            DbContext.SaveChanges();
+        }
+
         [HttpGet]
         public ActionResult UserProfile(String name)
         {
@@ -55,6 +66,7 @@ namespace ComicsMore.Controllers
                 {
                     Profile = user,
                     Comments = DbContext.Comments.Where(c => c.UserPage.Id == user.Id).ToList(),
+                    //Comments = user.Comments.Where(c => c.UserPage.Id == user.Id).ToList(),
                     Medals = user.Medals
                 };
 
@@ -96,18 +108,6 @@ namespace ComicsMore.Controllers
                 user.Medals.Add(medal);
                 UserManager.Update(user);
             }
-        }
-
-        [HttpPost]
-        public ActionResult DeleteComment(int commentId)
-        {
-            ApplicationUser user = UserManager.FindByName(pageName);
-            Comment comment = DbContext.Comments.First(c => c.Id == commentId);
-
-            user.Comments.Remove(comment);
-            UserManager.Update(user);
-
-            return RedirectToAction("UserProfile", "Profile");
         }
 
         public async Task<ActionResult> EditProfile(String name)

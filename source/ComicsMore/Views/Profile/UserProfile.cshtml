@@ -35,7 +35,7 @@
                 {
                     foreach (var medal in Model.Medals)
                     {
-                        <img src="@medal.ImageUrl" alt="@medal.Name" width="30" height="30" title="@medal.Contidion"/>
+                        <img src="@medal.ImageUrl" alt="@medal.Name" width="30" height="30" title="@medal.Contidion" />
                         <p>@medal.Name</p>
                     }
                 }
@@ -58,12 +58,13 @@
     {
         foreach (var comment in Model.Comments.Reverse())
         {
-            <div class="comment">
+            <div class="comments">
 
                 @Html.ActionLink(comment.Author.UserName, "UserProfile")
                 @* Compare ids*@
                 @if ((User.Identity.Name == comment.Author.UserName) || (User.IsInRole("Admin")))
                 {
+                    //Html.BeginForm("DeleteComment", "Profile", )
                     <button class="comment-delete btn btn-default" comment-id="@comment.Id">&#10005;</button>
                 }
                 <p>@comment.Body</p>
@@ -75,3 +76,21 @@
 @Styles.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/app-script")
+
+<script>
+    $(".comment-delete").click(function () {
+        var commentId = $(this).attr("comment-id");
+        jQuery.ajax({
+            traditional: true,
+            type: "POST",
+            url: '@Url.Action("DeleteComment", "Profile")',
+            data: JSON.stringify({ commentId: commentId }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            error: function () {
+                location.reload();
+            }
+        });
+
+    });
+</script>

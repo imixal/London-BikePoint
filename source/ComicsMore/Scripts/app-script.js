@@ -1,18 +1,17 @@
-﻿$(".comment-delete").click(function () {
-    commentId = $(this).attr("comment-id");
-    jQuery.ajax({
-        type: "POST",
-        url: 'DeleteComment',
-        data: JSON.stringify({ commentId: commentId }),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
+﻿//$(".comment-delete").click(function () {
+//    var commentId = $(this).attr("comment-id");
+//    jQuery.ajax({
+//        type: "POST",
+//        url: '@Url.Action("DeleteComment", "Profile")',
+//        data: { commentId: commentId },
+//        contentType: "application/json; charset=utf-8",
+//        dataType: "json",
 
-        success: function () {
-            alert("success");
-        },
-        error: function () {
-            alert("error");
-        }
-    });
-    alert(commentId);
-});
+//        success: function () {
+//            alert("success");
+//        },
+//        error: function () {
+//            alert("error");
+//        }
+//    });
+//});
