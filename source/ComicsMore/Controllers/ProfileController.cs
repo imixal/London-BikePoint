@@ -150,6 +150,8 @@ namespace ComicsMore.Controllers
             ApplicationUser userProfile = await UserManager.FindByNameAsync(name);
             String returnUrl = Request.UrlReferrer.AbsolutePath;
 
+            if (userProfile != null)
+            { 
             var uploadParams = new ImageUploadParams
             {
                 File = new FileDescription(file)
