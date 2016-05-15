@@ -13,6 +13,7 @@
     {
         ApplicationUser user = HttpContext.Current.GetOwinContext().
     GetUserManager<ApplicationUserManager>().FindById(HttpContext.Current.User.Identity.GetUserId());
+
         if (user.Style == "light")
         {
             @Styles.Render("~/Content/css");
@@ -43,7 +44,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink(Resources.Layout.Home, "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Create Comic Strip", "CreateComicStrip", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @if (User.IsInRole("Admin"))
                     {

@@ -1,0 +1,256 @@
+﻿body{
+    min-width:1200px;
+    padding:0px;
+    margin-top:50px;
+    background-color:#333333;
+    
+}
+#edit-panel{
+   box-sizing:padding-box;
+    width:7%;
+    height:900px;
+    background-color:#202020;
+    float:left;
+}
+label{
+    margin:5px;
+}
+#tools{
+    overflow:hidden;
+   box-sizing:padding-box;
+    list-style:none;
+    margin:0;
+    padding:20px 0;
+    text-align:center;
+    font-size:25px;
+    color:#fff;
+}
+.tool{
+    margin:20px 0;
+}
+.tool p{
+    font-size:15px;
+}
+.tool:hover{
+    color:#29bdb3;
+    cursor:pointer;
+}
+#edit-page{
+    position:relative;
+    box-sizing:padding-box;
+    background-image:url(http://s.editor.pho.to/images/editor/bg-pattern_v3.png);
+    width:85%;
+    height:900px;
+    float:left;
+}
+#content-pages{
+    padding-top:20px;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    box-sizing:padding-box;
+    float:left;
+    width:8%;
+    height:900px;
+    background-color:#202020;
+}
+#content-pages > h3{
+    color:#fff;
+    font-size:20px;
+    text-align:center;
+}
+#btn-add-page{
+    background-color:transparent;
+    color:#fff;
+    margin:10px;
+    border:none;
+    padding:5px 0px;
+    text-align:center;
+    font-weight:700;
+}
+#btn-add-page:hover{
+    cursor:pointer;
+    color:#29bdb3;
+}
+.page{
+    overflow:hidden;
+    position:absolute;
+    top:50px;
+    left:310px;
+    width:500px;
+    height:700px;
+    background-color:#fff;
+}
+
+
+#modal-window-page{
+
+    width:300px;
+    height:150px;
+    background-color:#fff;
+    top:40px;
+    left:5px;
+
+}
+#modal-window-template{
+
+    width:300px;
+    height:350px;
+    background-color:#fff;
+    top:115px;
+    left:5px;
+}
+#modal-window-picture{
+
+    width:300px;
+    height:150px;
+    background-color:#fff;
+    top:190px;
+    left:5px;
+}
+#modal-window-video{
+
+    width:150px;
+    height:150px;
+    background-color:#fff;
+    top:265px;
+    left:5px;
+}
+#modal-window-comment{
+    width:300px;
+    height:150px;
+    background-color:#fff;
+    top:340px;
+    left:5px;
+}
+#modal-window-font{
+    
+    width:300px;
+    height:480px;
+    background-color:#fff;
+    top:415px;
+    left:5px;
+}
+#modal-window-property{
+    width:300px;
+    height:300px;
+    background-color:#fff;
+    top:490px;
+    left:5px;
+}
+.strait{
+    font-size:35px;
+    color:#fff;
+    margin-left:-17px;
+    margin-top:-5px;
+}
+.active{
+    color:#29bdb3;
+}
+.modal-window-inner{
+    width:100%;
+    padding:0 30px;
+}
+.modal-window{
+   display:none;
+   position:absolute;
+   opacity:0.86;
+}
+.tool-name{
+    font-size:16px;
+    text-align:center;
+    font-weight:600;
+}
+.template-tab{
+    box-sizing:border-box;
+    float:left;
+}
+.template-tab-incline{
+    margin-left:-200px;
+    box-sizing:border-box;
+    width:100px;
+    height:50px;
+    float:left;
+    -webkit-transform:rotate(15deg);
+}
+#generate-btn{
+    float:right;
+    margin-top:10px;
+    padding:5px;
+    border:1px solid;
+    text-align:center;
+    border-radius:5px;
+}
+
+#generate-btn:hover{
+    cursor:pointer;
+    color:#29bdb3;
+}
+.clearfix{
+    clear:both;
+}
+.generate-text{
+    line-break:auto;
+    width:100px;
+    z-index:80;
+}
+.generate-text {
+    cursor:move
+}
+.change-text{
+    background-color:red;
+    padding:5px;
+    text-align:center;
+    border:1px dashed;
+
+}
+.form-control{
+    margin-top:5px;
+}
+.pages{
+    position:relative;
+    margin: 15px auto;
+    display:block;
+    width:80px;
+    height:100px;
+    background:white;
+    text-align:center;
+    line-height:100px;
+    font-size:35px;
+    font-weight:900;
+}
+.pages:hover{
+    color:#29bdb3;
+    cursor:pointer;
+    -webkit-box-shadow: 0px 0px 45px 3px #29bdb3;
+    -moz-box-shadow: 0px 0px 45px 3px #29bdb3;
+    box-shadow: 0px 0px 45px 3px #29bdb3;
+}
+#menu-page input{
+    display:none;
+}
+#menu-page input:checked + label{
+     color:#29bdb3;
+    -webkit-box-shadow: 0px 0px 45px 3px #29bdb3;
+    -moz-box-shadow: 0px 0px 45px 3px #29bdb3;
+    box-shadow: 0px 0px 45px 3px #29bdb3;
+}
+
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background:#29bdb3;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

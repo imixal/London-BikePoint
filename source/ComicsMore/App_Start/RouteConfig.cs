@@ -12,18 +12,11 @@ namespace ComicsMore
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapMvcAttributeRoutes();
-
-            routes.MapRoute(
-                name: "UserNameRoute",
-                url: "{controller}/{action}/{name}",
-                defaults: new { controller = "Home", action = "Index", name = UrlParameter.Optional }
-                );
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{name}",
+                defaults: new { controller = "Home", action = "Index", name = UrlParameter.Optional }
             );
         }
     }

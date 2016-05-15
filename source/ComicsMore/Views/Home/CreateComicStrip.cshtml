@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "CreateComicStrip";
+    Layout = "~/Views/Shared/_ComicStripLayout.cshtml";
+}
+
+<div id="edit-panel">
+    <ul id="tools">
+        <li class="tool" id="tool-page"><span class="glyphicon glyphicon-stop"></span><p>Страница</p></li>
+        <li class="tool" id="tool-template"><span class="glyphicon glyphicon-th-large"></span><p>Шаблон</p></li>
+        <li class="tool" id="tool-picture"><span class="glyphicon glyphicon-picture"></span><p>Картинка</p></li>
+        <li class="tool" id="tool-video"><span class="glyphicon glyphicon-film"></span><p>Видео</p></li>
+        <li class="tool" id="tool-comment"><span class="glyphicon glyphicon-comment"></span><p>Облачко</p></li>
+        <li class="tool" id="tool-font"><span class="glyphicon glyphicon-font"></span><p>Текст</p></li>
+        <li class="tool" id="tool-property"><span class="glyphicon glyphicon-wrench"></span><p>Свойства комикса</p></li>
+        <li class="tool" id="tool-zoom-in"><span class="glyphicon glyphicon-zoom-in"></span><p>Увеличить</p></li>
+        <li class="tool" id="tool-zoom-out"><span class="glyphicon glyphicon-zoom-out"></span><p>Уменьшить</p></li>
+
+    </ul>
+</div>
+<div id="edit-page">
+
+    <div class="modal-window" id="modal-window-page">
+        <span class="glyphicon glyphicon-arrow-left strait"></span>
+        <div class="modal-window-inner">
+            <p class="tool-name">Выберите формат страницы</p>
+            <hr />
+            <input id="A4a" type="radio" name="format" value="A4a">
+            <label for="A4a">А4 книжная</label>
+            <input id="A4b" type="radio" name="format" value="A4b">
+            <label for="A4b">А4 альбомная</label>
+
+
+        </div>
+    </div>
+    <div class="modal-window" id="modal-window-template">
+        <span class="glyphicon glyphicon-arrow-left strait"></span>
+        <div class="modal-window-inner">
+            <p class="tool-name">Выберите шаблон страницы</p>
+            <hr />
+            <input id="cell-1" type="radio" name="template" value="1 cell">
+            <label for="cell-1"> Одна ячейка</label>
+            <br />
+            <input id="cell-2" type="radio" name="template" value="2 cell">
+            <label for="cell-2"> Две ячейки</label>
+            <br />
+            <input id="cell-4" type="radio" name="template" value="4 cell">
+            <label for="cell-4"> Четыре ячейки</label>
+            <br />
+            <input id="incline-cell" type="radio" name="template" value="incline cell">
+            <label for="incline-cell"> Наклонная ячейка</label>
+            <br />
+            <br />
+            <input id="weight-template" type="range" max="30" min="1" name="weight">
+            <label for="weight-template"> Толщина границы</label>
+            <br />
+            <input id="color-template" type="color" name="color">
+            <label for="color-template"> Цвет границы</label>
+        </div>
+    </div>
+    <div class="modal-window" id="modal-window-picture">
+        <span class="glyphicon glyphicon-arrow-left strait"></span>
+        <div class="modal-window-inner">
+            <input type="file"
+                   id="file-upload"
+                   name="file"
+                   class="cloudinary-fileupload"
+                   data-cloudinary-field="image_id"
+                   data-form-data="{ 'api_key': '449254596371885' }" />
+        </div>
+    </div>
+    <div class="modal-window" id="modal-window-video"><span class="glyphicon glyphicon-arrow-left strait"></span></div>
+    <div class="modal-window" id="modal-window-comment">
+        <span class="glyphicon glyphicon-arrow-left strait"></span>
+        <div class="modal-window-inner">
+        </div>
+    </div>
+    <div class="modal-window" id="modal-window-font">
+        <span class="glyphicon glyphicon-arrow-left strait"></span>
+        <div class="modal-window-inner">
+            <p class="tool-name">Создадим текст</p>
+            <hr />
+            <label for="textholder-generate">Текст</label>
+            <input class="form-control" id="textholder-generate" type="text" placeholder="Введите текст" />
+            <label for="size-generate">Размер шрифта</label>
+            <input class="form-control" id="size-generate" type="number" max="30" min="10" value="14" placeholder="Размер" />
+            <label for="color-generate">Цвет шрифта</label>
+            <input class="form-control" id="color-generate" type="color">
+            <label for="weight-generate">Толщина шрифта</label>
+            <input class="form-control" id="weight-generate" type="number" placeholder="Толщина" max="900" min="500" step="100" value="500">
+            <div id="generate-btn">
+                Генерировать
+            </div>
+            <div class="clearfix"></div>
+            <div id="generate-text">
+            </div>
+        </div>
+    </div>
+    <div class="modal-window" id="modal-window-property">
+        <span class="glyphicon glyphicon-arrow-left strait"></span>
+        <div class="modal-window-inner">
+            <label for="comics-name">Название  комикса</label>
+            <input class="form-control" id="comics-name" type="text" placeholder="Название комикса" value="Мой комикс" />
+        </div>
+    </div>
+</div>
+<div id="content-pages">
+    <h3>Страницы:</h3>
+    <div id="menu-page">
+
+    </div>
+    <div id="btn-add-page">Добавить</div>
+</div>

@@ -19,7 +19,7 @@
             <td>@user.UserName</td>
             <td>@user.About</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { name = user.UserName }) |
+                @Html.ActionLink("Edit", "EditProfile", "Profile", new { name = user.UserName }, new { @title = "Edit" }) |
                 @Html.ActionLink("Delete", "Delete", new { id = user.Id })
             </td>
         </tr>
