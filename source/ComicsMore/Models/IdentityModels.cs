@@ -29,6 +29,8 @@ namespace ComicsMore.Models
         public String Style { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Medal> Medals { get; set; }
+        public virtual ICollection<ComicStrip> Comics { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
 
         public ApplicationUser()
         {

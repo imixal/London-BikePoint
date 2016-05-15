@@ -320,3 +320,4 @@ D:\1New folder\source\ComicsMore\bin\System.Web.WebPages.Razor.xml
 D:\1New folder\source\ComicsMore\bin\Antlr3.Runtime.pdb
 D:\1New folder\source\ComicsMore\bin\Newtonsoft.Json.xml
 D:\1New folder\source\ComicsMore\obj\Debug\ru\ComicsMore.resources.dll
+D:\1New folder\source\ComicsMore\obj\Debug\ComicsMore.Migrations.ComicsTags.resources

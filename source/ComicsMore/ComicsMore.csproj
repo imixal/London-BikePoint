@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ComicsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Filters\CultureAttribute.cs" />
@@ -264,6 +265,10 @@
     <Compile Include="Migrations\201605141236217_MedalNameAdded.cs" />
     <Compile Include="Migrations\201605141236217_MedalNameAdded.Designer.cs">
       <DependentUpon>201605141236217_MedalNameAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605151640483_ComicsTags.cs" />
+    <Compile Include="Migrations\201605151640483_ComicsTags.Designer.cs">
+      <DependentUpon>201605151640483_ComicsTags.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationModels.cs" />
@@ -380,12 +385,13 @@
     <Content Include="Views\Profile\EditProfile.cshtml" />
     <Content Include="Views\Admin\ManageUsers.cshtml" />
     <Content Include="Views\Shared\_ComicStripLayout.cshtml" />
-    <Content Include="Views\Home\CreateComicStrip.cshtml" />
+    <Content Include="Views\Comics\CreateComicStrip.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\DeleteUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -437,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605141236217_MedalNameAdded.resx">
       <DependentUpon>201605141236217_MedalNameAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605151640483_ComicsTags.resx">
+      <DependentUpon>201605151640483_ComicsTags.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Profile.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

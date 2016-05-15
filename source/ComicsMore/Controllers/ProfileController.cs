@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -22,7 +23,7 @@ namespace ComicsMore.Controllers
 
         public ProfileController()
         {
-        cloud = new Cloudinary(new Account("duke-cloudinary", "449254596371885", "Z_gisL814YSSnRkS_x2v8W4LqCM"));
+            cloud = new Cloudinary(new Account("comics-cloudinary", "449254596371885", "Z_gisL814YSSnRkS_x2v8W4LqCM"));
         }
 
         private IdentityContext DbContext
@@ -43,13 +44,14 @@ namespace ComicsMore.Controllers
 
         [HttpPost]
         [Route("DeleteComment")]
-        public void DeleteComment(int commentId)
+        public JsonResult DeleteComment(int commentId)
         {
             ApplicationUser user = UserManager.FindByName(pageName);
             Comment comment = DbContext.Comments.First(c => c.Id == commentId);
 
             DbContext.Comments.Remove(comment);
             DbContext.SaveChanges();
+            return Json(commentId, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -102,7 +104,7 @@ namespace ComicsMore.Controllers
         {
             ApplicationUser user = UserManager.FindByName(pageName);
 
-            if(user.Comments.Count >= 10)
+            if (user.Comments.Count >= 10)
             {
                 Medal medal = DbContext.Medals.First(m => m.Id == 7);
                 user.Medals.Add(medal);
@@ -127,14 +129,29 @@ namespace ComicsMore.Controllers
             ApplicationUser user = await UserManager.FindByNameAsync(name);
 
             if (user != null)
-            { 
-            //var uploadParams = new ImageUploadParams
-            //{
-            //    File = new FileDescription(file)
-            //};
-            //var uploadResult = cloud.Upload(uploadParams);
+            {
+                if (file != null)
+                {
+                    String fileName = file.FileName;
+                    String path = Server.MapPath("~/Images/") + fileName;
 
-            user.About = model.About;
+                    //if (!Directory.Exists(Server.MapPath("~/Images/")))
+                    //{
+                    //    Directory.CreateDirectory(path);
+                    //}
+                    file.SaveAs(path);
+                    
+
+                    var uploadParams = new ImageUploadParams
+                    {
+                        File = new FileDescription(path)
+                    };
+
+                    var uploadResult = cloud.Upload(uploadParams);
+                    user.ProfileImage = uploadResult.SecureUri.ToString();
+                }
+
+                user.About = model.About;
                 user.UserName = model.UserName;
 
                 IdentityResult result = await UserManager.UpdateAsync(user);

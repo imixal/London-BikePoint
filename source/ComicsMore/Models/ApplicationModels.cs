@@ -6,6 +6,35 @@ using System.Web;
 
 namespace ComicsMore.Models
 {
+    public class Tag
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public String Name { get; set; }
+    }
+
+    public class ComicStrip
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public String Name { get; set; }
+        public DateTime Time { get; set; }
+        [Required]
+        public virtual ApplicationUser Author { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
+        public double? Rating { get; set; }
+        [Required]
+        public String Json { get; set; }
+
+
+        public ComicStrip()
+        {
+            Time = DateTime.Now;
+        }
+    }
+
     public class Comment
     {
         [Key]

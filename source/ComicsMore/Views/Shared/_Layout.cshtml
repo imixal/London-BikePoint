@@ -44,7 +44,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink(Resources.Layout.Home, "Index", "Home")</li>
-                    <li>@Html.ActionLink("Create Comic Strip", "CreateComicStrip", "Home")</li>
+                    <li>@Html.ActionLink("Create Comic Strip", "CreateComicStrip", "Comics")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @if (User.IsInRole("Admin"))
                     {
@@ -57,10 +57,6 @@
                     <li>
                         @using (Html.BeginForm("ChangeCulture", "Home"))
                         {
-                            @*@Html.DropDownList("lang", new[] {
-                                new SelectListItem() { Selected = true, Disabled = true, Text = Resources.Layout.ChooseLanguage },
-                                new SelectListItem() { Text = "English", Value = "en" },
-                                new SelectListItem() { Text = "Русский", Value = "ru"} })*@
                             <select name="lang">
                                 <option disabled selected>@Resources.Layout.ChooseLanguage</option>
                                 <option value="en">English</option>

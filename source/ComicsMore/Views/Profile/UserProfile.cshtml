@@ -58,14 +58,14 @@
     {
         foreach (var comment in Model.Comments.Reverse())
         {
-            <div class="comments">
+            <div class="comments" comment-id="@comment.Id">
 
                 @Html.ActionLink(comment.Author.UserName, "UserProfile")
                 @* Compare ids*@
                 @if ((User.Identity.Name == comment.Author.UserName) || (User.IsInRole("Admin")))
                 {
                     //Html.BeginForm("DeleteComment", "Profile", )
-                    <button class="comment-delete btn btn-default" comment-id="@comment.Id">&#10005;</button>
+                    <button class="comment-delete btn btn-default">&#10005;</button>
                 }
                 <p>@comment.Body</p>
                 <p>@comment.Time.ToString("dd MMMM") @Resources.Profile.At @comment.Time.ToString("h:mm tt").ToLower()</p>
@@ -79,7 +79,7 @@
 
 <script>
     $(".comment-delete").click(function () {
-        var commentId = $(this).attr("comment-id");
+        var commentId = $(".comments").attr("comment-id");
         jQuery.ajax({
             traditional: true,
             type: "POST",
@@ -87,8 +87,12 @@
             data: JSON.stringify({ commentId: commentId }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
+            success: function(data)
+            {
+                $(".comments[comment-id = " + data + "]").remove();
+            },
             error: function () {
-                location.reload();
+                alert("cannot delete comment")
             }
         });
 

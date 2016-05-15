@@ -4,7 +4,8 @@
     var active_obj = null;
     var number_of_page = 1;
     var current_page_number = 1;
-    var page = {};
+    var comics = {};
+    var page = [];
     $(document).ready(function () {
         drags();
         
@@ -221,6 +222,28 @@
         });
         number_of_page++;
        
+    });
+
+    $("#create").click(function () { 
+        comics = {
+            name: $("#comics-name").val(),
+            pages: page,
+        }
+        //alert($.param(comics));
+        $.ajax({
+            traditional: true,
+            type: "POST",
+           // contentType: "application/json; charset=utf-8",
+            url: "CreateComics/",
+            data: { json: JSON.stringify(comics)},
+            success: function (data) {
+                alert(JSON.parse(data).pages[1].style_page);
+            },
+            error: function(){
+                alert("c");
+            },
+            dataType: "json"
+        });
     });
     
 });

@@ -27,13 +27,6 @@ namespace ComicsMore.Controllers
             return View();
         }
 
-        public ActionResult CreateComicStrip()
-        {
-            ViewBag.Message = "Comics More Editor";
-
-            return View();
-        }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
