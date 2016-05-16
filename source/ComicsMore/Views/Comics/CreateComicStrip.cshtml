@@ -10,9 +10,7 @@
        <li class="tool" id="tool-font"><span class="glyphicon glyphicon-comment"></span><p>Текст</p></li>
        <li class="tool" id="tool-picture"><span class="glyphicon glyphicon-picture"></span><p>Картинка</p></li>
        <li class="tool" id="tool-video"><span class="glyphicon glyphicon-film"></span><p>Видео</p></li>
-       <li class="tool" id="tool-property"><span class="glyphicon glyphicon-wrench"></span><p>Создать комикс</p></li>
-       <li class="tool" id="tool-zoom-in"><span class="glyphicon glyphicon-zoom-in"></span><p>Увеличить</p></li>
-       <li class="tool" id="tool-zoom-out"><span class="glyphicon glyphicon-zoom-out"></span><p>Уменьшить</p></li>
+       <li class="tool" id="tool-property"><span class="glyphicon glyphicon-wrench"></span><p>Опубликовать</p></li>
 
 
 
@@ -49,8 +47,9 @@
             <label for="incline-cell"> Наклонная ячейка</label>
             <br />
             <br />
-            <input id="weight-template" type="range" max="10" min="1" value="5" name="weight">
             <label for="weight-template"> Толщина границы</label>
+            <input id="weight-template" type="range" max="10" min="1" value="5" name="weight">
+            
             <br />
             <input id="color-template" type="color" name="color">
             <label for="color-template"> Цвет границы</label>
@@ -63,14 +62,53 @@
                    type="file" 
                    id="file-upload" 
                    name="file" 
-                   class="cloudinary-fileupload"
-                   data-cloudinary-field="image_id"
-                   data-form-data="{ 'api_key': '449254596371885' }"
+                   accept="image/jpeg, image/png, image/gif"
             />
         </div>
     </div>
     <div class="modal-window" id="modal-window-video"><span class="glyphicon glyphicon-arrow-left strait"></span></div>
+    <div id="change" class="container">
+        <div class="row">
+            <p class="tool-name">Редактировать текст</p>
+            <hr />
+            <label for="textholder-change">Текст</label>
+            <input class="form-control" id="textholder-change" type="text" placeholder="Введите текст" />
+        </div>
+        <div class="row"><label>Шрифт</label></div>
+        <div class="row"> 
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label for="size-change">Размер </label>
+                    <input class="form-control" id="size-change" type="number" max="30" min="10" value="14" placeholder="Размер" />
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label for="color-change">Цвет </label>
+                    <input class="form-control" id="color-change" type="color">
+                </div>
+         </div>
+        <div class="row"><label>Облачко</label></div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <label for="cloud-change">Цвет </label>
+                <input id="cloud-change" class="form-control" type="color">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <label for="side-cloud-change">Cтрелка</label>
+                <select id="side-cloud-change" class="form-control">
+                    <option value="left">Слева</option>
+                    <option value="right" selected>Справа</option>
+                    <option value="top">Сверху</option>
+                    <option value="bottom">Снизу</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="row"><label>Размеры</label></div>
+        <div class="row"><input type="range" max="10" min="1" value="5"/></div>
+        <div class="row"><input class="form-control" type="button" value="Удалить" / ></div>
+     </div>
+
     <div class="modal-window" id="modal-window-font"><span class="glyphicon glyphicon-arrow-left strait"></span>
+        
         <div class="modal-window-inner">
             <p class="tool-name">Создадим текст</p>
             <hr />
@@ -79,15 +117,11 @@
             <label for="size-generate">Размер шрифта</label>
             <input class="form-control" id="size-generate" type="number" max="30" min="10" value="14" placeholder="Размер" />
             <label for="color-generate">Цвет шрифта</label>
-            <input class="form-control" id="color-generate" type="color">
+            <input class="form-control" id="color-generate" type="color" value="#ffffff">
             <label for="weight-generate">Толщина шрифта</label>
             <input class="form-control" id="weight-generate" type="number" placeholder="Толщина" max="900" min="500" step="100" value="500">
-            <label for="cloud-generate">Тип облачка</label>
-            <select id="cloud-generate" class="form-control">
-                <option value="speech-bubble" selected>Тип 1</option>
-                <option value="" >Тип 2</option>
-                <option value="">Тип 3</option>
-            </select>
+            <label for="cloud-generate">Цвет облачка</label>
+            <input id="cloud-generate" class="form-control" type="color">
             <label for="side-cloud-generate">Расположение стрелки</label>
             <select id="side-cloud-generate" class="form-control">
                 <option value="left">Слева</option>

@@ -30,7 +30,7 @@ namespace ComicsMore.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateImage(String data)
+        public JsonResult UploadImage(String data)
         {
             HttpPostedFileBase file = null;
             String imageUrl = null;

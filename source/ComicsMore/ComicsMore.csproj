@@ -351,6 +351,7 @@
     <Content Include="Scripts\Cloudinary\jquery.iframe-transport.js" />
     <Content Include="Scripts\Cloudinary\jquery.ui.widget.js" />
     <Content Include="Scripts\Cloudinary\load-image.all.min.js" />
+    <Content Include="Scripts\image.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

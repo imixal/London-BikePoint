@@ -47,12 +47,23 @@ label{
     height:900px;
     float:left;
 }
+#change{
+    display:none;
+    text-align:center;
+    padding:30px;
+    position:absolute;
+    right:10px;
+    top:50px;
+    width:250px;
+    height:450px;
+    background-color:#fff;
+}
 #content-pages{
     padding-top:20px;
     overflow-x:hidden;
     overflow-y:scroll;
     box-sizing:padding-box;
-    float:left;
+    float:right;
     width:8%;
     height:900px;
     background-color:#202020;
@@ -193,13 +204,7 @@ label{
 .generate-text {
     cursor:move
 }
-.change-text{
-    background-color:red;
-    padding:5px;
-    text-align:center;
-    border:1px dashed;
 
-}
 .form-control{
     margin-top:5px;
 }

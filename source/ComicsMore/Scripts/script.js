@@ -6,6 +6,8 @@
     var current_page_number = 1;
     var comics = {};
     var page = [];
+    var tempp;
+    var text_id;
     $(document).ready(function () {
         drags();
         
@@ -26,6 +28,7 @@
             $(object_active).addClass("active");
         }
         else { $(object_active).removeClass("active") }
+        $("#change").hide();
     }
     function close() {
         $(".modal-window").hide("fast");
@@ -125,7 +128,7 @@
     });
     $(function () {
         $("input[name=color]").change(function () {
-            page[current_page_number].template.color = $("input[name=weight]").val();
+            page[current_page_number].template.color = $("input[name=color]").val();
             template();
         })
     });
@@ -161,10 +164,14 @@
         active($(this));
     });
     function addtext(text) {
-        var temp = gen_text;
-        $("#page-inner-" + current_page_number).children().first().append('<div id="t' + temp + '" class="draggable generate-text ' + text.type_cloud + ' speech-bubble-' + text.side_cloud + '" >' + text.value + '</div>');
-        $("#t" + temp).css({"width":text.width+"px","height":text.height+"px","line-height":text.height+"px", "font-size": text.size + "px", "color": text.color + "px", "font-weight": text.weight,"left" :text.left,"top": text.top })
+        tempp = gen_text;
+        $("#page-inner-" + current_page_number).children().first().append('<div id="t' + tempp + '" class="draggable generate-text speech-bubble speech-bubble-' + text.side_cloud + '" >' + text.value + '</div>');
+        $("#t" + tempp).css({"width":text.width+"px","height":text.height+"px","padding":"auto", "font-size": text.size + "px", "color": text.color + "px", "font-weight": text.weight,"left" :text.left,"top": text.top,"background-color":text.color_cloud })
         drags();
+        $("#t" + tempp).click(function () {
+            text_id = $(this).text();
+            change_text($(this).text());
+        });
         gen_text++;
     };
     function addtexts() {
@@ -174,29 +181,7 @@
             }
         }
     }
-    /* картинка и облако*/
-    $("#generate-btn").click(function () {
-            page[current_page_number].text[$("#textholder-generate").val()] = {
-                value: $("#textholder-generate").val(),
-                left: 0,
-                right: 0,
-                size: $("#size-generate").val(),
-                color: $("#color-generate").val(),
-                weight: $("#weight-generate").val(),
-                height: $("#height-generate").val(),
-                width: $("#width-generate").val(),
-                type_cloud: $("#cloud-generate").val(),
-                side_cloud: $("#side-cloud-generate").val(),
-            };
-            addtext(page[current_page_number].text[$("#textholder-generate").val()]);
-            $(".generate-text").click(function () {
-                $(".generate-text").removeClass("change-text");
-                $(this).addClass("change-text");
-            });
-
-        
-    });
-    $("#btn-add-page").click(function () {
+    function initilization_page() {
         $("#menu-page").append('<input id="menu-page-' + number_of_page + '" type="radio" name="pages"/><label class="pages" for="menu-page-' + number_of_page + '">' + number_of_page + '</label>');
         $("#edit-page").append('<section id="page-' + number_of_page + '"><div id="page-inner-' + number_of_page + '" >   </div></section>');
         page[number_of_page] = {
@@ -210,7 +195,7 @@
             video: {},
             text: [],
         };
-        $("#menu-page-"+number_of_page).click(function () {
+        $("#menu-page-" + number_of_page).click(function () {
             $(" section").hide();
             current_page_number = Number($(this).attr("id").replace("menu-page-", ""));
             page_format(page[current_page_number].style_page);
@@ -218,11 +203,44 @@
             cell(page[current_page_number].template);
             addtexts();
             $("#page-" + current_page_number).show();
-            
+            $("#change").hide();
+
         });
         number_of_page++;
-       
+
+    };
+    function text_add(number) {
+            page[number].text[$("#textholder-generate").val()] = {
+            value: $("#textholder-generate").val(),
+            left: 0,
+            right: 0,
+            size: $("#size-generate").val(),
+            color: $("#color-generate").val(),
+            weight: $("#weight-generate").val(),
+            height: $("#height-generate").val(),
+            width: $("#width-generate").val(),
+            color_cloud: $("#cloud-generate").val(),
+            side_cloud: $("#side-cloud-generate").val(),
+        };
+    };
+    function change_text(text) {
+        $("#textholder-change").attr({ "value": page[current_page_number].text[text].value });
+        $("#size-change").attr({ "value": page[current_page_number].text[text].size });
+        $("#color-change").attr({ "value": page[current_page_number].text[text].color });
+        $("#cloud-change").attr({ "value": page[current_page_number].text[text].color_cloud });
+        $("#side-cloud-change").attr({ "value": page[current_page_number].text[text].side_cloud });
+        $("#change").show();
+
+    };
+    $("#textholder-change").change(function () {
+        page[current_page_number].text[text_id].value = $("#textholder-change").val();
     });
+    /* картинка и облако*/
+    $("#generate-btn").click(function () {
+            text_add(current_page_number);
+            addtext(page[current_page_number].text[$("#textholder-generate").val()]);
+    });
+    $("#btn-add-page").click(function () { initilization_page(); });
 
     $("#create").click(function () { 
         comics = {
