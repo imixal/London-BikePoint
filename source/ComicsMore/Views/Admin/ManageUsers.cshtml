@@ -16,7 +16,7 @@
     @foreach (var user in Model)
     {
         <tr>
-            <td>@user.UserName</td>
+            <td><p><a href="/Profile/UserProfile/@user.UserName">@user.UserName</a></p></td>
             <td>@user.About</td>
             <td>
                 @Html.ActionLink("Edit", "EditUser", "Admin", new { name = user.UserName }, new { @title = "Edit" }) |

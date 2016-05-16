@@ -12,12 +12,7 @@ namespace ComicsMore.Tests
         [TestMethod]
         public void UserProfile_NotNullExpected()
         {
-            ProfileController controller = new ProfileController();
 
-            //ViewResult result = controller.UserProfile(new Comment(new ApplicationUser(), "text")) as ViewResult;
-            //UserViewModel data = result.Model as UserViewModel;
-
-            //Assert.IsNotNull(data.Comments);
         }
     }
 }

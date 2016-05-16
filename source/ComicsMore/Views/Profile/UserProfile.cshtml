@@ -48,11 +48,9 @@
 </div>
 <div id="comments-block">
     <div id="add-comment">
-        <form id="comment-form" method="post" action="DeleteComment">
-            <label for="comment-for">@Resources.Profile.Comments</label>
-            <textarea class="form-control" name="Body" placeholder="@Resources.Profile.CommentPlaceholder"></textarea>
-            <input type="submit" value="@Resources.Profile.AddComment" class="btn btn-default" />
-        </form>
+        <label for="comment-for">@Resources.Profile.Comments</label>
+        <textarea class="form-control" id="body" name="body" placeholder="@Resources.Profile.CommentPlaceholder"></textarea>
+        <button id="addComment" class="btn btn-default">@Resources.Profile.AddComment</button>
     </div>
     @if (Model.Comments != null)
     {
@@ -61,8 +59,7 @@
             <div class="comments" comment-id="@comment.Id">
 
                 @Html.ActionLink(comment.Author.UserName, "UserProfile")
-                @* Compare ids*@
-                @if ((User.Identity.Name == comment.Author.UserName) || (User.IsInRole("Admin")))
+                @if ((User.Identity.GetUserId() == comment.Author.Id) || (User.IsInRole("Admin")))
                 {
                     //Html.BeginForm("DeleteComment", "Profile", )
                     <button class="comment-delete btn btn-default">&#10005;</button>
@@ -87,8 +84,7 @@
             data: JSON.stringify({ commentId: commentId }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function(data)
-            {
+            success: function (data) {
                 $(".comments[comment-id = " + data + "]").remove();
             },
             error: function () {
@@ -97,4 +93,20 @@
         });
 
     });
+
+    $("#addComment").click(function () {
+        var commentBody = $("#body").val();
+        var name = '@User.Identity.Name';
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddComment", "Profile")',
+            data: JSON.stringify({ commentBody: commentBody, name: name }),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            error: function () {
+                location.reload();
+            }
+        })
+    })
 </script>

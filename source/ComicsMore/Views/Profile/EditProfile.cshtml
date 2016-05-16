@@ -15,11 +15,11 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">Profile Image</label>
                     <div class="col-md-10">
-                        <img src="@Model.ProfileImage" class="img-rounded"
+                        <img src="@Model.ProfileImage" class="img-rounded" id="profileImage"
                              alt="" width="150" height="150" />
                     </div>
                     <div class="col-md-offset-2 col col-md-10">
-                        <input type="file" name="file" id="file" class="btn btn-default" />
+                        <input type="file" name="file" id="upload" class="btn btn-default" accept="image/jpeg, image/png, image/gif"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -41,18 +41,38 @@
                     </div>
                 </div>
                 @*<div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <a href="@Url.Action("Delete")">
-                            <input type="button" value="Delete profile" class="btn btn-danger" />
-                        </a>
-                    </div>
-                </div>*@
+                        <div class="col-md-offset-2 col-md-10">
+                            <a href="@Url.Action("Delete")">
+                                <input type="button" value="Delete profile" class="btn btn-danger" />
+                            </a>
+                        </div>
+                    </div>*@
             }
         </section>
     </div>
 </div>
-@Scripts.Render("~/bundles/cloudinary")
 @Styles.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jquery")
 <script>
-    $.cloudinary.config("cloud_name", "your_cloud_name");
+    $("#upload").change(function () {
+        var data = new FormData();
+        var files = $("#upload").get(0).files;
+        if (files.length > 0) {
+            data.append("HelpSectionImages", files[0]);
+        }
+        $.ajax({
+            url: '@Url.Action("UpdateImage", "Profile")',
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (data) {
+                $("#profileImage").change()
+            },
+            error: function (er) {
+                alert(er);
+            }
+
+        });
+    });
 </script>
